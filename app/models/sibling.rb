@@ -34,9 +34,12 @@ class Sibling < ActiveRecord::Base
     def deploy_all(manual=true, instruction_id=nil)
       not_main_app.map { |sibling| sibling.deploy(instruction_id) }
     end
+    
+    def main_app
+      where(main_app: true).first
+    end
   end
 
-  scope :main_app, where(main_app: true).first
   scope :not_main_app, where(main_app: false)
 
   def deploy(manual=true, instruction_id=nil)
