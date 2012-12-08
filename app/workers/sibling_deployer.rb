@@ -2,10 +2,10 @@ class SiblingDeployer
   extend HerokuResqueAutoscaler if Rails.env.production?
   @queue = :deployer
 
-  def self.perform
+  def self.perform(id)
     logger.info "Starting sibling deploy..."
 
-    Sibling.deploy
+    SiblingDeploy.find(id).deploy
 
     logger.info "Succeeded deploying siblings."
   rescue StandardError => e
