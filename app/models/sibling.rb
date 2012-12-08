@@ -12,7 +12,7 @@ class Sibling < ActiveRecord::Base
       G5HentryConsumer::EG5App.parse(path_or_url).first
     end
 
-    def seed(path_or_url=MAIN_APP_UID)
+    def consume(path_or_url=MAIN_APP_UID)
       main_app = microformat_app
       find_or_create_from_microformat(main_app, true)
       main_app.siblings.each do |app|
