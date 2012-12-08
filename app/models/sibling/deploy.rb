@@ -5,7 +5,7 @@ class Sibling::Deploy < ActiveRecord::Base
   belongs_to :sibling
   belongs_to :instruction
 
-  validates :sibling_id, presnce: true
+  validates :sibling_id, presence: true
   validates :manual, inclusion: { in: [true, false] }
   validates :git_repo, presence: true
   validates :heroku_repo, presence: true

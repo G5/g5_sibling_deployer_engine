@@ -57,7 +57,10 @@ config.paths['db/migrate'] += G5SiblingDeployer::Engine.paths['db/migrate'].exis
 
 You get these routes and views for free:
 ```bash
-TODO
+               siblings GET  /siblings(.:format)                 siblings#index
+  siblings_instructions GET  /siblings/instructions(.:format)    siblings/instructions#index
+       siblings_deploys GET  /siblings/deploys(.:format)         siblings/deploys#index
+g5_configurator_webhook POST /webhooks/g5-configurator(.:format) webhooks#g5_configurator
 ```
 
 
