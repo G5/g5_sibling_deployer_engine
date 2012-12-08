@@ -1,5 +1,5 @@
 class SiblingsController < ApplicationController
    def index
-     @siblings = Siblings.all
+     @siblings = Sibling.all
    end
 end
