@@ -10,7 +10,7 @@ Rails engine for G5 Sibling Deployers
 
 ## Requirements
 
-* ["rails", "~> 3.2.0"](http://rubygems.org/gems/rails)
+* ["rails", "~> 3.2.7"](http://rubygems.org/gems/rails)
 * ["state_machine", "~> 1.1.2"](http://rubygems.org/gems/state_machine)
 * ["heroku_resque_autoscaler", "~> 0.1.0"](http://rubygems.org/gems/heroku_resque_autoscaler)
 * ["github_heroku_deployer", "~> 0.2.0"](http://rubygems.org/gems/github_heroku_deployer)
@@ -51,6 +51,7 @@ Add to `config/application.rb`
 # followed by application and other railties
 # allows overridding in main app
 config.railties_order = [G5SiblingDeployer::Engine, :main_app, :all]
+
 # include G5SiblingDeployer::Engine's migrations
 config.paths['db/migrate'] += G5SiblingDeployer::Engine.paths['db/migrate'].existent
 ```
