@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/g5_github_heroku_deployer/version', __FILE__)
+require File.expand_path('../lib/g5_sibling_deployer/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Jessica Lynn Suttles"]
@@ -11,9 +11,9 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "g5_github_heroku_deployer"
+  gem.name          = "g5_sibling_deployer"
   gem.require_paths = ["lib"]
-  gem.version       = G5GithubHerokuDeployer::VERSION
+  gem.version       = G5SiblingDeployer::VERSION
 
   gem.add_dependency "rails", "~> 3.2.0"
   gem.add_dependency "state_machine", "~> 1.1.2"

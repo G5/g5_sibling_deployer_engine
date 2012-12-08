@@ -1,6 +1,6 @@
-# G5 Github Heroku Deployer
+# G5 Sibling Deployer
 
-Rails engine for G5 Github Heroku Deployers
+Rails engine for G5 Sibling Deployers
 
 
 ## Current Version
@@ -11,6 +11,7 @@ Rails engine for G5 Github Heroku Deployers
 ## Requirements
 
 * ["rails", "~> 3.2.0"](http://rubygems.org/gems/rails)
+* ["state_machine", "~> 1.1.2"](http://rubygems.org/gems/state_machine)
 * ["heroku_resque_autoscaler", "~> 0.1.0"](http://rubygems.org/gems/heroku_resque_autoscaler)
 * ["github_heroku_deployer", "~> 0.2.0"](http://rubygems.org/gems/github_heroku_deployer)
 * ["g5_hentry_consumer", "~> 0.2.6"](https://github.com/g5search/g5_hentry_consumer)
@@ -23,7 +24,7 @@ Add these lines to your application's Gemfile.
 ```ruby
 source "https://gems.gemfury.com/***REMOVED***/"
 
-gem "g5_github_heroku_deployer"
+gem "g5_sibling_deployer"
 ```
 
 ### From Gemfury Command line
@@ -32,13 +33,13 @@ Add the Source URL to your .gemrc with this command:
 
 ```bash
 gem sources -a https://gems.gemfury.com/***REMOVED***/
-gem install g5_github_heroku_deployer
+gem install g5_sibling_deployer
 ```
 
 Or use it a single install:
 
 ```
-gem install g5_github_heroku_deployer --source https://gems.gemfury.com/***REMOVED***/
+gem install g5_sibling_deployer --source https://gems.gemfury.com/***REMOVED***/
 ```
 
 
@@ -46,12 +47,12 @@ gem install g5_github_heroku_deployer --source https://gems.gemfury.com/***REMOV
 
 Add to `config/application.rb`
 ```
-# load G5GithubHerokuDeployer::Engine with highest priority
+# load G5SiblingDeployer::Engine with highest priority
 # followed by application and other railties
 # allows overridding in main app
-config.railties_order = [G5GithubHerokuDeployer::Engine, :main_app, :all]
-# include G5GithubHerokuDeployer::Engine's migrations
-config.paths['db/migrate'] += G5GithubHerokuDeployer::Engine.paths['db/migrate'].existent
+config.railties_order = [G5SiblingDeployer::Engine, :main_app, :all]
+# include G5SiblingDeployer::Engine's migrations
+config.paths['db/migrate'] += G5SiblingDeployer::Engine.paths['db/migrate'].existent
 ```
 
 You get these routes and views for free:
@@ -77,7 +78,7 @@ TODO
 7. Create new Pull Request
 
 If you find bugs, have feature requests or questions, please
-[file an issue](https://github.com/g5search/g5_github_heroku_deployer/issues).
+[file an issue](https://github.com/g5search/g5_sibling_deployer/issues).
 
 
 ## Specs
@@ -90,10 +91,10 @@ rspec spec
 ## Releases
 
 ```bash
-vi lib/g5_github_heroku_deployer/version.rb # change version
+vi lib/g5_sibling_deployer/version.rb # change version
 vi README.md # change version
 git add . && git commit -m "bumps version" && git push
 git tag -a -m "Version v0.0.0" v0.0.0 && git push --tags
 rake build
-fury push pkg/g5_github_heroku_deployer-0.0.0.pkg
+fury push pkg/g5_sibling_deployer-0.0.0.pkg
 ```
