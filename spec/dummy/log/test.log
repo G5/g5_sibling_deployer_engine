@@ -7,3 +7,99 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
   [1m[36mSibling Load (0.2ms)[0m  [1mSELECT "siblings".* FROM "siblings" WHERE "siblings"."main_app" = 't' LIMIT 1[0m
+Connecting to database specified by database.yml
+  [1m[36mSibling Load (0.2ms)[0m  [1mSELECT "siblings".* FROM "siblings" WHERE "siblings"."main_app" = 't' LIMIT 1[0m
+Connecting to database specified by database.yml
+  [1m[36mSibling Load (0.2ms)[0m  [1mSELECT "siblings".* FROM "siblings" WHERE "siblings"."main_app" = 't' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by SiblingsController#index as HTML
+  [1m[36mSibling Load (0.2ms)[0m  [1mSELECT "siblings".* FROM "siblings" [0m
+  Rendered /Users/jlsuttles/Dropbox/Projects/g5/g5_sibling_deployer/app/views/siblings/index.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 60ms (Views: 59.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36mSibling Load (0.2ms)[0m  [1mSELECT "siblings".* FROM "siblings" WHERE "siblings"."main_app" = 't' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  UPDATE "siblings" SET "updated_at" = '2012-12-08 11:12:49.209200' WHERE "siblings"."id" = 1001
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by SiblingsController#index as HTML
+  [1m[35mSibling Load (0.1ms)[0m  SELECT "siblings".* FROM "siblings" 
+  Rendered /Users/jlsuttles/Dropbox/Projects/g5/g5_sibling_deployer/app/views/siblings/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 55ms (Views: 53.6ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36mSibling Load (0.2ms)[0m  [1mSELECT "siblings".* FROM "siblings" WHERE "siblings"."main_app" = 't' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  UPDATE "siblings" SET "updated_at" = '2012-12-08 11:14:04.465631' WHERE "siblings"."id" = 1001
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by SiblingsController#index as HTML
+  [1m[35mSibling Load (0.1ms)[0m  SELECT "siblings".* FROM "siblings" 
+  Rendered /Users/jlsuttles/Dropbox/Projects/g5/g5_sibling_deployer/app/views/siblings/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 50ms (Views: 49.4ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36mSibling Load (0.6ms)[0m  [1mSELECT "siblings".* FROM "siblings" WHERE "siblings"."main_app" = 't' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by SiblingsController#index as HTML
+  Rendered /Users/jlsuttles/Dropbox/Projects/g5/g5_sibling_deployer/app/views/siblings/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 56ms (Views: 55.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36mSibling Load (0.8ms)[0m  [1mSELECT "siblings".* FROM "siblings" WHERE "siblings"."main_app" = 't' LIMIT 1[0m
+Connecting to database specified by database.yml
+  [1m[36mSibling Load (0.2ms)[0m  [1mSELECT "siblings".* FROM "siblings" WHERE "siblings"."main_app" = 't' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by Siblings::InstructionsController#index as HTML
+  Rendered /Users/jlsuttles/Dropbox/Projects/g5/g5_sibling_deployer/app/views/siblings/instructions/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 59ms (Views: 58.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by SiblingsController#index as HTML
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36mSibling Load (0.2ms)[0m  [1mSELECT "siblings".* FROM "siblings" WHERE "siblings"."main_app" = 't' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by Siblings::DeploysController#index as HTML
+  Rendered /Users/jlsuttles/Dropbox/Projects/g5/g5_sibling_deployer/app/views/siblings/deploys/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 52ms (Views: 51.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by Siblings::InstructionsController#index as HTML
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by SiblingsController#index as HTML
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36mSibling Load (0.2ms)[0m  [1mSELECT "siblings".* FROM "siblings" WHERE "siblings"."main_app" = 't' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by SiblingsController#index as HTML
+  Rendered /Users/jlsuttles/Dropbox/Projects/g5/g5_sibling_deployer/app/views/siblings/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 55ms (Views: 54.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by Siblings::DeploysController#index as HTML
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by Siblings::InstructionsController#index as HTML
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
