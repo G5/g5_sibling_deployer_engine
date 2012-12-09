@@ -5,7 +5,7 @@ class SiblingDeployer
   def self.perform(id)
     logger.info "Starting sibling deploy..."
 
-    SiblingDeploy.find(id).deploy
+    Sibling::Deploy.find(id).deploy
 
     logger.info "Succeeded deploying siblings."
   rescue StandardError => e

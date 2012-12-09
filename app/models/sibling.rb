@@ -42,11 +42,11 @@ class Sibling < ActiveRecord::Base
 
   scope :not_main_app, where(main_app: false)
 
-  def deploy(manual=true, instruction_id=nil)
+  def deploy(instruction_id=nil)
     # raise G5SiblingDeployer::DeployError.new("You can't deploy yourself!") if main_app?
     self.deploys.create!(
       instruction_id: instruction_id,
-      manual: manual,
+      manual: !instruction_id,
       git_repo: git_repo,
       heroku_repo: heroku_repo,
       heroku_app_name: heroku_app_name

@@ -19,7 +19,7 @@ class Sibling::Instruction < ActiveRecord::Base
 
     def consume_feed(path_or_url=FEED_URL)
       feed(path_or_url).entries.map do |hentry|
-        if instruction_targets_me?(hentry)
+        if targets_me?(hentry)
           consume_hentry(hentry)
         end
       end.compact
@@ -29,7 +29,7 @@ class Sibling::Instruction < ActiveRecord::Base
       Resque.enqueue(SiblingInstructionConsumer)
     end
 
-    def instruction_targets_me?(hentry)
+    def targets_me?(hentry)
       if hentry.nil? || hentry.is_a?(String)
         hentry == Sibling.main_app.uid
       else
