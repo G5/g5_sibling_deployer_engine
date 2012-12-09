@@ -14,15 +14,15 @@
 ActiveRecord::Schema.define(:version => 3) do
 
   create_table "sibling_deploys", :force => true do |t|
-    t.integer  "sibling_id_id"
-    t.integer  "instruction_id_id"
+    t.integer  "sibling_id"
+    t.integer  "instruction_id"
     t.boolean  "manual"
     t.string   "state"
     t.string   "git_repo"
     t.string   "heroku_repo"
     t.string   "heroku_app_name"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "sibling_instructions", :force => true do |t|
