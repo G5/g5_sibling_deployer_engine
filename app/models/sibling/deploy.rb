@@ -33,7 +33,7 @@ class Sibling::Deploy < ActiveRecord::Base
   scope :automatic, where(manual: false)
 
   def deploy
-    deploy!
+    start!
 
     GithubHerokuDeployer.deploy(
       git_repo: git_repo,
