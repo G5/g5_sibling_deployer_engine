@@ -6,7 +6,6 @@ class Sibling < ActiveRecord::Base
   has_many :deploys
   has_many :instructions, through: :deploys
 
-
   class << self
     def microformat_app(path_or_url=MAIN_APP_UID)
       G5HentryConsumer::EG5App.parse(path_or_url).first
@@ -32,9 +31,9 @@ class Sibling < ActiveRecord::Base
     end
 
     def deploy_all(manual=true, instruction_id=nil)
-      not_main_app.map { |sibling| sibling.deploy(instruction_id) }
+      not_main_app.each { |sibling| sibling.deploy(instruction_id) }
     end
-    
+
     def main_app
       where(main_app: true).first
     end
@@ -43,7 +42,7 @@ class Sibling < ActiveRecord::Base
   scope :not_main_app, where(main_app: false)
 
   def deploy(instruction_id=nil)
-    # raise G5SiblingDeployer::DeployError.new("You can't deploy yourself!") if main_app?
+    return false if main_app?
     self.deploys.create!(
       instruction_id: instruction_id,
       manual: !instruction_id,
