@@ -29,6 +29,9 @@ class Sibling::Deploy < ActiveRecord::Base
     end
   end
 
+  scope :manual, where(manual: true)
+  scope :automatic, where(manual: false)
+
   def deploy
     deploy!
 
