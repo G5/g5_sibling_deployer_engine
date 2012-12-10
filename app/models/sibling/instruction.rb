@@ -29,6 +29,16 @@ class Sibling::Instruction < ActiveRecord::Base
       Resque.enqueue(SiblingInstructionConsumer)
     end
 
+    def find_or_create_from_hentry(hentry)
+      find_or_create_by_uid(
+        uid: hentry.bookmark,
+        name: hentry.name.first,
+        published_at: hentry.published_at.first
+      )
+    end
+
+    private
+
     def targets_me?(hentry)
       if hentry.nil? || hentry.is_a?(String)
         hentry == Sibling.main_app.uid
@@ -36,14 +46,6 @@ class Sibling::Instruction < ActiveRecord::Base
         targets = hentry.content.first.targets
         targets && targets.include?(Sibling.main_app.uid)
       end
-    end
-
-    def find_or_create_from_hentry(hentry)
-      find_or_create_by_uid(
-        uid: hentry.bookmark,
-        name: hentry.name.first,
-        published_at: hentry.published_at.first
-      )
     end
   end # class << self
 
