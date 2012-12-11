@@ -46,7 +46,7 @@ gem install g5_sibling_deployer --source https://gems.gemfury.com/***REMOVED***/
 ## Usage
 
 Add to `config/application.rb`
-```
+```ruby
 # load G5SiblingDeployer::Engine with highest priority
 # followed by application and other railties
 # allows overridding in main app
