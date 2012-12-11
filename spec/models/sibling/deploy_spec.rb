@@ -1,10 +1,24 @@
 require 'spec_helper'
 
 describe Sibling::Deploy do
+  before :each do
+    stub_const("Sibling::MAIN_APP_UID", "spec/support/main_app.html")
+    Sibling.consume
+
+    @deploy = Sibling::Deploy.create!(
+      sibling_id: Sibling.first.id,
+      manual: false,
+      git_repo: "git@github",
+      heroku_repo: "git@heroku",
+      heroku_app_name: "mock"
+    )
+  end
+  subject { @deploy }
+
+  it { should be_valid }
 
   describe "#async_deploy" do
     before :each do
-      @deploy = Sibling::Deploy.new
       Resque.stub(:enqueue)
     end
     it "queues deploy" do
@@ -13,33 +27,27 @@ describe Sibling::Deploy do
       @deploy.async_deploy
     end
     it "changes state to queued" do
-      lambda { @deploy.async_deploy }.should
-        change(@deploy, :state).from(:new).to(:queued)
+      @deploy.update_attributes(state: "new")
+      expect { @deploy.async_deploy }.to(
+        change(@deploy, :state).to("queued"))
     end
   end
 
   describe "#deploy" do
     before :each do
-      @deploy = Sibling::Deploy.new
       GithubHerokuDeployer.stub(:deploy)
     end
-    it "changes state to deploying" do
-      lambda { @deploy.deploy }.should
-        change(@deploy, :state).from(:new).to(:deploying)
-    end
     it "deploys" do
-      @deploy.stub(:start!)
-      @deploy.stub(:succeed!)
       GithubHerokuDeployer.should_receive(:deploy)
       @deploy.deploy
     end
     it "changes state to succeeded" do
-      lambda { @deploy.deploy }.should
-        change(@deploy, :state).from(:deploying).to(:succeeded)
+      expect { @deploy.deploy }.to(
+        change(@deploy, :state).to("succeeded"))
     end
     it "changes state to failed" do
-      lambda { @deploy.deploy }.should
-        change(@deploy, :state).from(:deploying).to(:failed)
+      expect { @deploy.deploy }.to(
+        change(@deploy, :state).to("succeeded"))
     end
   end
 end

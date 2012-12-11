@@ -20,7 +20,7 @@ class Sibling::Instruction < ActiveRecord::Base
     def consume_feed(path_or_url=FEED_URL)
       feed(path_or_url).entries.map do |hentry|
         if targets_me?(hentry)
-          consume_hentry(hentry)
+          find_or_create_from_hentry(hentry)
         end
       end.compact
     end
@@ -52,6 +52,6 @@ class Sibling::Instruction < ActiveRecord::Base
   private
 
   def deploy
-    Sibling.deploy_all(self.id)
+    Sibling.deploy_all(true, self.id)
   end
 end

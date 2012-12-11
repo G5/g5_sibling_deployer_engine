@@ -28,13 +28,13 @@ describe Sibling do
       @app = Sibling.microformat_app
     end
     it "creates Sibling if it does not already exist" do
-      lambda { Sibling.find_or_create_from_microformat(@app) }.should
-        change(Sibling, :count).by(1)
+      expect { Sibling.find_or_create_from_microformat(@app) }.to(
+        change(Sibling, :count).by(1))
     end
     it "finds Sibling if it already exists" do
       Sibling.find_or_create_from_microformat(@app)
-      lambda { Sibling.find_or_create_from_microformat(@app) }.should
-        change(Sibling, :count).by(0)
+      expect { Sibling.find_or_create_from_microformat(@app) }.to(
+        change(Sibling, :count).by(0))
     end
   end
 
@@ -79,21 +79,16 @@ describe Sibling do
       @sibling = Sibling.not_main_app.first
     end
     it "creates a deploy" do
-      lambda { @sibling.deploy }.should
-        change(Sibling::Deploy, :count).by(1)
+      expect { @sibling.deploy }.to(
+        change(Sibling::Deploy, :count).by(1))
     end
     it "does not create deploy if called on main_app" do
-      lambda { @main_app.deploy }.should
-        change(Sibling::Deploy, :count).by(0)
+      expect { @main_app.deploy }.to(
+        change(Sibling::Deploy, :count).by(0))
     end
     it "creates manual deploys when instruction is not present" do
-      lambda { @sibling.deploy }.should
-        change(Sibling::Deploy.manual, :count).by(1)
-    end
-    it "creates automatic deploys when instruction is present" do
-      instruction = mock Sibling::Instruction
-      lambda { @sibling.deploy(instruction.id) }.should
-        change(Sibling::Deploy.automatic, :count).by(1)
+      expect { @sibling.deploy }.to(
+        change(Sibling::Deploy.manual, :count).by(1))
     end
   end
 end
