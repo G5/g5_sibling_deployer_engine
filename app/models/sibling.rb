@@ -19,6 +19,10 @@ class Sibling < ActiveRecord::Base
       end.compact
     end
 
+    def async_consume
+      Resque.enqueue(SiblingConsumer)
+    end
+
     def find_or_create_from_microformat(app, main_app=false)
       find_or_create_by_uid(
         uid: app.uid,
