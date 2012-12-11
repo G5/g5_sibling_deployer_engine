@@ -18,6 +18,8 @@ Rails engine for G5 Sibling Deployers
 * ["g5_hentry_consumer", "~> 0.2.7"](https://github.com/g5search/g5_hentry_consumer)
 
 
+## Installation
+
 ### Gemfile
 
 Add these lines to your application's Gemfile.
@@ -46,6 +48,11 @@ gem install g5_sibling_deployer --source https://gems.gemfury.com/88yeKzEGfizstw
 
 ## Usage
 
+Export environment variables:
+```bash
+export MAIN_APP_UID=http://g5-configurator.herokuapp.com/apps/1
+```
+
 Add to `config/application.rb`:
 ```ruby
 # load G5SiblingDeployer::Engine with highest priority
@@ -60,6 +67,12 @@ config.paths['db/migrate'] += G5SiblingDeployer::Engine.paths['db/migrate'].exis
 Run migrations:
 ```bash
 rake db:migrate
+```
+
+Seed database:
+```bash
+rake sibling:consume
+rake sibling:instruction:consume
 ```
 
 You get these routes and views for free:
