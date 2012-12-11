@@ -19,6 +19,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency "rails", "~> 3.2.7"
+  gem.add_dependency "table_cloth", "~> 0.2.1"
   gem.add_dependency "state_machine", "~> 1.1.2"
   gem.add_dependency "heroku_resque_autoscaler", "~> 0.1.0"
   gem.add_dependency "g5_hentry_consumer", "~> 0.2.7"

@@ -1,1 +1,11 @@
-<%= @siblings_deploys %>
+<% title "Siblings Deploys" %>
+
+<%= simple_table_for @siblings_deploys do |t| %>
+  <% t.column :sibling_id %>
+  <% t.column :instruction_id %>
+  <% t.column :manual %>
+  <% t.column :state %>
+  <% t.column :git_repo %>
+  <% t.column :heroku_repo %>
+  <% t.column :heroku_app_name %>
+<% end %>
