@@ -11,10 +11,11 @@ Rails engine for G5 Sibling Deployers
 ## Requirements
 
 * ["rails", "~> 3.2.7"](http://rubygems.org/gems/rails)
+* ["table_cloth", "~> 0.2.1"](http://rubygems.org/gems/table_cloth)
 * ["state_machine", "~> 1.1.2"](http://rubygems.org/gems/state_machine)
 * ["heroku_resque_autoscaler", "~> 0.1.0"](http://rubygems.org/gems/heroku_resque_autoscaler)
 * ["github_heroku_deployer", "~> 0.2.0"](http://rubygems.org/gems/github_heroku_deployer)
-* ["g5_hentry_consumer", "~> 0.2.6"](https://github.com/g5search/g5_hentry_consumer)
+* ["g5_hentry_consumer", "~> 0.2.7"](https://github.com/g5search/g5_hentry_consumer)
 
 
 ### Gemfile
