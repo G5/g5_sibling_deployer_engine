@@ -49,5 +49,8 @@ class Sibling::Deploy < ActiveRecord::Base
   def async_deploy
     queue!
     Resque.enqueue(SiblingDeployer, self.id)
+  rescue StandardError => e
+    fail!
+    raise e
   end
 end

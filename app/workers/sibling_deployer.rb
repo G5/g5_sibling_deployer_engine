@@ -3,13 +3,13 @@ class SiblingDeployer
   @queue = :deployer
 
   def self.perform(id)
-    logger.info "Starting sibling deploy..."
+    Rails.logger.info "Starting sibling deploy..."
 
     Sibling::Deploy.find(id).deploy
 
-    logger.info "Succeeded deploying siblings."
+    Rails.logger.info "Succeeded deploying siblings."
   rescue StandardError => e
-    logger.info "Failed deploying siblings."
+    Rails.logger.info "Failed deploying siblings."
     raise e
   end
 end

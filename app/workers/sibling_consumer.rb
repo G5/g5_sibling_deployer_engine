@@ -3,13 +3,13 @@ class SiblingConsumer
   @queue = :consumer
 
   def self.perform(id)
-    logger.info "Starting sibling consumption..."
+    Rails.logger.info "Starting sibling consumption..."
 
     Sibling.consume
 
-    logger.info "Succeeded consuming siblings."
+    Rails.logger.info "Succeeded consuming siblings."
   rescue StandardError => e
-    logger.info "Failed consuming siblings."
+    Rails.logger.info "Failed consuming siblings."
     raise e
   end
 end
