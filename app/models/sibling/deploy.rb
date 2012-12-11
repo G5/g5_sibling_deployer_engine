@@ -15,17 +15,16 @@ class Sibling::Deploy < ActiveRecord::Base
 
   state_machine :initial => :new do
     event :queue do
-      transition :new => :queued
+      transition any => :queued
     end
     event :start do
-      transition :queued => :deploying
-      transition :new => :deploying
+      transition any => :deploying
     end
     event :fail do
-      transition :deploying => :failed
+      transition any => :failed
     end
     event :succeed do
-      transition :deploying => :succeeded
+      transition any => :succeeded
     end
   end
 
