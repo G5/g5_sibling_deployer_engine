@@ -1,1 +1,10 @@
-<%= @siblings %>
+<% title "Siblings" %>
+
+<%= simple_table_for @siblings do |t| %>
+  <% t.column :uid %>
+  <% t.column :name %>
+  <% t.column :git_repo %>
+  <% t.column :heroku_repo %>
+  <% t.column :heroku_app_name %>
+  <% t.column :main_app %>
+<% end %>

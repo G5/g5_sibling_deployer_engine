@@ -1,4 +1,5 @@
 require "rails"
+require "table_cloth"
 require "state_machine"
 require "g5_hentry_consumer"
 require "github_heroku_deployer"
