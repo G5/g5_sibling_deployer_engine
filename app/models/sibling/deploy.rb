@@ -35,7 +35,7 @@ class Sibling::Deploy < ActiveRecord::Base
     start!
 
     GithubHerokuDeployer.deploy(
-      git_repo: git_repo,
+      github_repo: git_repo,
       heroku_repo: heroku_repo,
       heroku_app_name: heroku_app_name
     )
