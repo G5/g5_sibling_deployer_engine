@@ -3,11 +3,13 @@
 <%= render partial: "siblings/nav", locals: { page: :deploys } %>
 
 <%= simple_table_for @siblings_deploys do |t| %>
-  <% t.column :sibling_id %>
-  <% t.column :instruction_id %>
-  <% t.column :manual %>
+  <% t.column :id %>
+  <% t.column :created_at %>
+  <% t.column :heroku_app_name %>
   <% t.column :state %>
   <% t.column :git_repo %>
   <% t.column :heroku_repo %>
-  <% t.column :heroku_app_name %>
+  <% t.column :sibling_id %>
+  <% t.column :instruction_id %>
+  <% t.column :manual %>
 <% end %>

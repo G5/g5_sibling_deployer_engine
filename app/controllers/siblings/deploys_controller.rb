@@ -1,5 +1,5 @@
 class Siblings::DeploysController < Siblings::ApplicationController
   def index
-    @siblings_deploys = Sibling::Deploy.all
+    @siblings_deploys = Sibling::Deploy.order("created_at DESC").all
   end
 end

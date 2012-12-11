@@ -3,10 +3,14 @@
 <%= render partial: "nav", locals: { page: :siblings } %>
 
 <%= simple_table_for @siblings do |t| %>
-  <% t.column :uid %>
+  <% t.column :id %>
   <% t.column :name %>
+  <% t.column :heroku_app_name %>
   <% t.column :git_repo %>
   <% t.column :heroku_repo %>
-  <% t.column :heroku_app_name %>
-  <% t.column :main_app %>
+  <% t.actions do %>
+    <% action { |sibling| link_to "UID", sibling.uid, class: "btn" } %>
+    <% action { |sibling| sibling.main_app? ? "" :
+        link_to("Deploy", deploy_sibling_path(sibling), class: "btn", method: :post) } %>
+  <% end %>
 <% end %>

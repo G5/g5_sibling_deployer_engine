@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  get "siblings" => "siblings#index", as: :siblings
+  resources :siblings, only: [:index] do
+    member do
+      post "deploy"
+    end
+  end
+
   get "siblings/instructions" => "siblings/instructions#index", as: :siblings_instructions
   get "siblings/deploys" => "siblings/deploys#index", as: :siblings_deploys
 

@@ -3,7 +3,11 @@
 <%= render partial: "siblings/nav", locals: { page: :instructions } %>
 
 <%= simple_table_for @siblings_instructions do |t| %>
-  <% t.column :uid %>
+  <% t.column :id %>
   <% t.column :name %>
   <% t.column :published_at %>
+  <% t.column :created_at %>
+  <% t.actions do %>
+    <% action { |instruction| link_to "UID", instruction.uid, class: "btn" } %>
+  <% end %>
 <% end %>
