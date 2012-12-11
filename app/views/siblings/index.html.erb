@@ -1,5 +1,7 @@
 <% title "Siblings" %>
 
+<%= render partial: "nav", locals: { page: :siblings } %>
+
 <%= simple_table_for @siblings do |t| %>
   <% t.column :uid %>
   <% t.column :name %>

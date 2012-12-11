@@ -1,0 +1,5 @@
+<ul class="nav nav-pills">
+  <li class="<%= page == :siblings ? "active" : nil%>"><%= link_to "Siblings", siblings_path %></li>
+  <li class="<%= page == :instructions ? "active" : nil%>"><%= link_to "Instructions", siblings_instructions_path %></li>
+  <li class="<%= page == :deploys ? "active" : nil%>"><%= link_to "Deploys", siblings_deploys_path %></li>
+</ul>

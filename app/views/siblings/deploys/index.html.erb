@@ -1,4 +1,6 @@
-<% title "Siblings Deploys" %>
+<% title "Deploys" %>
+
+<%= render partial: "siblings/nav", locals: { page: :deploys } %>
 
 <%= simple_table_for @siblings_deploys do |t| %>
   <% t.column :sibling_id %>
