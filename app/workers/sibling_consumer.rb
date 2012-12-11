@@ -2,7 +2,7 @@ class SiblingConsumer
   extend HerokuResqueAutoscaler if Rails.env.production?
   @queue = :consumer
 
-  def self.perform(id)
+  def self.perform
     Rails.logger.info "Starting sibling consumption..."
 
     Sibling.consume
