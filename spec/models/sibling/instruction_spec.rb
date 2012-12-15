@@ -24,6 +24,11 @@ describe Sibling::Instruction do
       expect { Sibling::Instruction.consume_feed }.to(
         change(Sibling::Instruction, :count).by(0))
     end
+    it "creates instructions that target me" do
+      Sibling::Instruction.stub(:last_modified_at) { Time.parse("11:32pm on December  10, 2012") }
+      expect { Sibling::Instruction.consume_feed }.to(
+        change(Sibling::Instruction, :count).by(0))
+    end
   end
 
   describe ".find_or_create_from_hentry" do

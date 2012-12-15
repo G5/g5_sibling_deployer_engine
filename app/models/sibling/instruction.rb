@@ -13,16 +13,23 @@ class Sibling::Instruction < ActiveRecord::Base
   after_save :deploy
 
   class << self
+    
     def feed(path_or_url=FEED_URL)
-      G5HentryConsumer.parse(path_or_url)
+      G5HentryConsumer.parse(path_or_url, last_modified_at: last_modified_at)
     end
-
+    
+    def last_modified_at
+      scoped.maximum(:created_at)
+    end
+    
     def consume_feed(path_or_url=FEED_URL)
       feed(path_or_url).entries.map do |hentry|
         if targets_me?(hentry)
           find_or_create_from_hentry(hentry)
         end
       end.compact
+    rescue OpenURI::HTTPError, "304 Not Modified"
+      true
     end
 
     def async_consume_feed
