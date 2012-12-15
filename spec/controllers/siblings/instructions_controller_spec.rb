@@ -4,7 +4,7 @@ describe Siblings::InstructionsController do
   describe "GET index" do
     it "assigns all siblings instructions to @siblings_instructions" do
       siblings_instructions = stub_model(Sibling::Instruction)
-      Sibling::Instruction.stub(:all) { [siblings_instructions] }
+      Sibling::Instruction.stub(:order) { [siblings_instructions] }
       get :index
       expect(assigns(:siblings_instructions)).to eq([siblings_instructions])
     end
