@@ -5,7 +5,7 @@ Rails engine for G5 Sibling Deployers
 
 ## Current Version
 
-0.0.1
+0.1.0
 
 
 ## Requirements
