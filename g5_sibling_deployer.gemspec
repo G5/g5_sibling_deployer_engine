@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.version       = G5SiblingDeployer::VERSION
   gem.authors       = ["Jessica Lynn Suttles"]
   gem.email         = ["jlsuttles@gmail.com"]
-  gem.description   = "Rails Engine for G5 sibling deployers" 
+  gem.description   = "Rails Engine for G5 sibling deployers"
   gem.summary       = "Rails Engine for G5 sibling deployers"
   gem.homepage      = "https://github.com/g5search/g5_sibling_deployer"
 
@@ -24,8 +24,12 @@ Gem::Specification.new do |gem|
   gem.add_dependency "heroku_resque_autoscaler", "~> 0.1.0"
   gem.add_dependency "g5_hentry_consumer", "~> 0.5.0"
   gem.add_dependency "github_heroku_deployer", "~> 0.2.0"
-  
+
   gem.add_development_dependency "sqlite3", "~> 1.3.6"
+  gem.add_development_dependency "simplecov", "~> 0.7.1"
   gem.add_development_dependency "rspec-rails", "~> 2.12.0"
+  gem.add_development_dependency "guard-rspec", "~> 2.1.0"
+  gem.add_development_dependency "spork", "~> 0.9.2"
+  gem.add_development_dependency "rb-fsevent", "~> 0.9.2"
   gem.add_development_dependency "debugger", "~> 1.2.1"
 end
