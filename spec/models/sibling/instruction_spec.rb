@@ -29,6 +29,17 @@ describe Sibling::Instruction do
       expect { Sibling::Instruction.consume_feed }.to(
         change(Sibling::Instruction, :count).by(0))
     end
+    it "swallows http errors" do
+      Sibling::Instruction.stub(:feed).and_raise(OpenURI::HTTPError.new("304 Not Modified", nil))
+      Sibling::Instruction.consume_feed.should == true
+    end
+  end
+
+  describe ".async_consume_feed" do
+    it "queues consumer" do
+      Resque.should_receive(:enqueue).with(SiblingInstructionConsumer)
+      Sibling::Instruction.async_consume_feed
+    end
   end
 
   describe ".find_or_create_from_hentry" do
@@ -43,6 +54,15 @@ describe Sibling::Instruction do
       Sibling::Instruction.find_or_create_from_hentry(@hentry)
       expect { Sibling::Instruction.find_or_create_from_hentry(@hentry) }.to(
         change(Sibling::Instruction, :count).by(0))
+    end
+  end
+
+  describe ".targets_me?" do
+    it "is true when main app uid" do
+      Sibling::Instruction.targets_me?(nil).should == false
+    end
+    it "is false when not main app uid" do
+      Sibling::Instruction.targets_me?(Sibling.main_app.uid).should == true
     end
   end
 end

@@ -23,6 +23,13 @@ describe Sibling do
     end
   end
 
+  describe ".async_consume" do
+    it "queues consumer" do
+      Resque.should_receive(:enqueue).with(SiblingConsumer)
+      Sibling.async_consume
+    end
+  end
+
   describe ".find_or_create_from_microformat" do
     before :each do
       @app = Sibling.microformat_app

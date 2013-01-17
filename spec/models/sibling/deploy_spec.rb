@@ -23,13 +23,16 @@ describe Sibling::Deploy do
     end
     it "queues deploy" do
       @deploy.stub(:queue!)
-      Resque.should_receive(:enqueue).exactly(1).times
+      Resque.should_receive(:enqueue).once
       @deploy.async_deploy
     end
     it "changes state to queued" do
       @deploy.update_attributes(state: "new")
-      expect { @deploy.async_deploy }.to(
-        change(@deploy, :state).to("queued"))
+      expect { @deploy.async_deploy }.to change(@deploy, :state).to("queued")
+    end
+    it "does not swallow errors" do
+      Resque.stub(:enqueue).and_raise(StandardError.new("Foo"))
+      lambda { @deploy.async_deploy }.should raise_error(StandardError, "Foo")
     end
   end
 
@@ -42,12 +45,11 @@ describe Sibling::Deploy do
       @deploy.deploy
     end
     it "changes state to succeeded" do
-      expect { @deploy.deploy }.to(
-        change(@deploy, :state).to("succeeded"))
+      expect { @deploy.deploy }.to change(@deploy, :state).to("succeeded")
     end
-    it "changes state to failed" do
-      expect { @deploy.deploy }.to(
-        change(@deploy, :state).to("succeeded"))
+    it "does not swallow errors" do
+      GithubHerokuDeployer.stub(:deploy).and_raise(StandardError.new("Foo"))
+      lambda { @deploy.deploy }.should raise_error(StandardError, "Foo")
     end
   end
 end
