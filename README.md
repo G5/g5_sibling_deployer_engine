@@ -1,6 +1,6 @@
 # G5 Sibling Deployer
 
-Rails engine for G5 Sibling Deployers
+Provides models, views, controllers, routes, and rake tasks for deploying Sibling Apps.
 
 
 ## Current Version
@@ -116,6 +116,14 @@ If you find bugs, have feature requests or questions, please
 
 ```bash
 rspec spec
+```
+
+
+## Coverage
+
+```bash
+rspec spec
+open coverage/index.html
 ```
 
 
