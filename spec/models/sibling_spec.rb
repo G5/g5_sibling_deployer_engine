@@ -50,23 +50,27 @@ describe Sibling do
   end
 
   describe ".main_app" do
+    before :each do
+      Sibling.consume
+    end
     it "does not return non main apps" do
-      sibling = Sibling.create!(main_app: false)
+      Sibling.where(main_app: true).destroy_all
       Sibling.main_app.should be_nil
     end
     it "returns main apps" do
-      sibling = Sibling.create!(main_app: true)
-      Sibling.main_app.should eq(sibling)
+      Sibling.main_app.should eq(Sibling.where(main_app: true).first)
     end
   end
 
   describe ".not_main_app" do
+    before :each do
+      Sibling.consume
+    end
     it "returns non main apps" do
-      sibling = Sibling.create!(main_app: false)
-      Sibling.not_main_app.should eq([sibling])
+      Sibling.not_main_app.should eq(Sibling.where(main_app: false))
     end
     it "does not return main apps" do
-      sibling = Sibling.create!(main_app: true)
+      Sibling.where(main_app: false).destroy_all
       Sibling.not_main_app.should be_empty
     end
   end

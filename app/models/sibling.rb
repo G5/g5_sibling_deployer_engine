@@ -6,6 +6,15 @@ class Sibling < ActiveRecord::Base
   has_many :deploys
   has_many :instructions, through: :deploys
 
+  before_validation :set_defaults
+
+  validates :uid, presence: true, uniqueness: true
+  validates :name, presence: true
+  validates :git_repo, presence: true
+  validates :heroku_repo, presence: true
+  validates :heroku_app_name, presence: true
+  validates :main_app, inclusion: { in: [true, false] }
+
   class << self
     def microformat_app(path_or_url=MAIN_APP_UID)
       G5HentryConsumer::EG5App.parse(path_or_url).first
@@ -54,5 +63,11 @@ class Sibling < ActiveRecord::Base
       heroku_repo: heroku_repo,
       heroku_app_name: heroku_app_name
     )
+  end
+
+  private
+
+  def set_defaults
+    self.main_app = false if self.main_app == nil
   end
 end
