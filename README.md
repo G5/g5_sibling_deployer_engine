@@ -53,19 +53,9 @@ Export environment variables:
 export MAIN_APP_UID=http://g5-configurator.herokuapp.com/apps/1
 ```
 
-Add to `config/application.rb`:
-```ruby
-# load G5SiblingDeployer::Engine with highest priority
-# followed by application and other railties
-# allows overridding in main app
-config.railties_order = [G5SiblingDeployer::Engine, :main_app, :all]
-
-# include G5SiblingDeployer::Engine's migrations
-config.paths['db/migrate'] += G5SiblingDeployer::Engine.paths['db/migrate'].existent
-```
-
 Run migrations:
 ```bash
+rake railties:install:migrations
 rake db:migrate
 ```
 
