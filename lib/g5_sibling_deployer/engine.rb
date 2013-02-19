@@ -1,4 +1,4 @@
-module G5SiblingDeployer
+module G5SiblingDeployerEngine
   class Engine < Rails::Engine
   end
 end
