@@ -27,7 +27,7 @@ Add these lines to your application's Gemfile.
 ```ruby
 source "https://gems.gemfury.com/88yeKzEGfizstwBaXVqj/"
 
-gem "g5_sibling_deployer"
+gem "g5_sibling_deployer_engine"
 ```
 
 ### From Gemfury Command line
@@ -36,13 +36,13 @@ Add the Source URL to your .gemrc with this command:
 
 ```bash
 gem sources -a https://gems.gemfury.com/88yeKzEGfizstwBaXVqj/
-gem install g5_sibling_deployer
+gem install g5_sibling_deployer_engine
 ```
 
 Or use it a single install:
 
 ```
-gem install g5_sibling_deployer --source https://gems.gemfury.com/88yeKzEGfizstwBaXVqj/
+gem install g5_sibling_deployer_engine --source https://gems.gemfury.com/88yeKzEGfizstwBaXVqj/
 ```
 
 
@@ -99,7 +99,7 @@ rake sibling:instruction:consume # consumes instruction feed
 7. Create new Pull Request
 
 If you find bugs, have feature requests or questions, please
-[file an issue](https://github.com/g5search/g5_sibling_deployer/issues).
+[file an issue](https://github.com/g5search/g5_sibling_deployer_engine/issues).
 
 
 ## Specs
@@ -120,10 +120,10 @@ open coverage/index.html
 ## Releases
 
 ```bash
-vi lib/g5_sibling_deployer/version.rb # change version
+vi lib/g5_sibling_deployer_engine/version.rb # change version
 vi README.md # change version
 git add . && git commit -m "bumps version" && git push
 git tag -a -m "Version v0.0.0" v0.0.0 && git push --tags
 rake build
-fury push pkg/g5_sibling_deployer-0.0.0.pkg
+fury push pkg/g5_sibling_deployer_engine-0.0.0.pkg
 ```
