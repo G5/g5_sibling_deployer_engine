@@ -2,17 +2,17 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "g5_sibling_deployer/version"
+require "g5_sibling_deployer_engine/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |gem|
-  gem.name          = "g5_sibling_deployer"
-  gem.version       = G5SiblingDeployer::VERSION
+  gem.name          = "g5_sibling_deployer_engine"
+  gem.version       = G5SiblingDeployerEngine::VERSION
   gem.authors       = ["Jessica Lynn Suttles"]
   gem.email         = ["jlsuttles@gmail.com"]
   gem.description   = "Rails Engine for G5 sibling deployers"
   gem.summary       = "Rails Engine for G5 sibling deployers"
-  gem.homepage      = "https://github.com/g5search/g5_sibling_deployer"
+  gem.homepage      = "https://github.com/g5search/g5_sibling_deployer_engine"
 
   gem.files         = `git ls-files`.split($\)
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
