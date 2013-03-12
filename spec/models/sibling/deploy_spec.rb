@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Sibling::Deploy do
   before :each do
-    stub_const("Sibling::MAIN_APP_UID", "spec/support/main_app.html")
-    Sibling.consume
+    Sibling.stub(:main_app_uid).and_return("spec/support/g5-configurator-app.html")
+    Sibling.consume_main_app_hcard
 
     @deploy = Sibling::Deploy.create!(
       sibling_id: Sibling.first.id,
