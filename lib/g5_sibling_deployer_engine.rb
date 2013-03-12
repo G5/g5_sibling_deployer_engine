@@ -1,7 +1,7 @@
 require "rails"
 require "table_cloth"
 require "state_machine"
-require "g5_hentry_consumer"
+require "microformats2"
 require "github_heroku_deployer"
 require "heroku_resque_autoscaler"
 require "g5_sibling_deployer_engine/engine"
