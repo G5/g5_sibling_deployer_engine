@@ -2,67 +2,61 @@ require 'spec_helper'
 
 describe Sibling::Instruction do
   before :each do
-    stub_const("Sibling::MAIN_APP_UID", "spec/support/main_app.html")
-    stub_const("Sibling::Instruction::FEED_URL", "spec/support/instructions.html")
-    Sibling.consume
+    Sibling.stub(:main_app_uid).and_return("spec/support/g5-configurator-app.html")
+    Sibling::Instruction.stub(:feed_url).and_return("spec/support/g5-configurator-entries.html")
+    Sibling.consume_main_app_hcard
+    Sibling.stub(:main_app_uid).and_return("http://g5-configurator.dev/apps/g5-chd-1-metro-self-storage")
   end
 
   describe ".feed" do
-    it "is an Array of h-entry" do
-      Sibling::Instruction.feed.should be_an_instance_of G5HentryConsumer::HFeed
+    it "returns a Microformats2::Collection" do
+      Sibling::Instruction.feed.should be_kind_of Microformats2::Collection
     end
   end
-
   describe ".consume_feed" do
-    it "creates instructions that target me" do
-      Sibling.any_instance.stub(:uid).and_return("http://g5-configurator.dev/apps/16")
-      expect { Sibling::Instruction.consume_feed }.to(
-        change(Sibling::Instruction, :count).by(1))
+    it "returns an Array of created ActiveRecord Entries" do
+      Sibling::Instruction.consume_feed.first.should be_a_kind_of(Sibling::Instruction)
     end
-    it "does not create intructions that do not target me" do
-      Sibling.any_instance.stub(:uid).and_return("http://g5-configurator.dev/apps/17")
-      expect { Sibling::Instruction.consume_feed }.to(
-        change(Sibling::Instruction, :count).by(0))
+    it "returns nil if not targeted" do
+      Sibling.stub(:main_app_uid).and_return("http://g5-configurator.dev/apps/g5-ch-1-metro-self-storage")
+      Sibling::Instruction.consume_feed.first.should be_nil
     end
-    it "creates instructions that target me" do
-      Sibling::Instruction.stub(:last_modified_at) { Time.parse("11:32pm on December  10, 2012") }
-      expect { Sibling::Instruction.consume_feed }.to(
-        change(Sibling::Instruction, :count).by(0))
-    end
-    it "swallows http errors" do
-      Sibling::Instruction.stub(:feed).and_raise(OpenURI::HTTPError.new("304 Not Modified", nil))
-      Sibling::Instruction.consume_feed.should == true
+    it "swallows 304 errors" do
+      error = OpenURI::HTTPError.new("304 Not Modified", nil)
+      Sibling::Instruction.stub(:find_or_create_from_hentry).and_raise(error)
+      Sibling::Instruction.consume_feed.should be_nil
     end
   end
-
   describe ".async_consume_feed" do
-    it "queues consumer" do
+    it "enqueues Sibling::InstructionConsumer" do
+      Resque.stub(:enqueue)
       Resque.should_receive(:enqueue).with(SiblingInstructionConsumer)
       Sibling::Instruction.async_consume_feed
     end
   end
-
   describe ".find_or_create_from_hentry" do
-    before :each do
-      @hentry = Sibling::Instruction.feed.entries.first
+    before do
+      @hentry = Sibling::Instruction.feed.entries.second
+      @instruction = Sibling::Instruction.instruction(@hentry)
     end
-    it "creates Instruction if it does not already exist" do
+    it "creates an Sibling::Instruction" do
       expect { Sibling::Instruction.find_or_create_from_hentry(@hentry) }.to(
         change(Sibling::Instruction, :count).by(1))
     end
-    it "finds Instruction if it already exists" do
-      Sibling::Instruction.find_or_create_from_hentry(@hentry)
+    it "creates a Deploy" do
       expect { Sibling::Instruction.find_or_create_from_hentry(@hentry) }.to(
-        change(Sibling::Instruction, :count).by(0))
+        change(Sibling::Deploy, :count).by(1))
     end
   end
-
-  describe ".targets_me?" do
-    it "is true when main app uid" do
-      Sibling::Instruction.targets_me?(nil).should == false
+  describe ".instruction" do
+    before do
+      @instruction = Sibling::Instruction.instruction(Sibling::Instruction.feed.entries.second)
     end
-    it "is false when not main app uid" do
-      Sibling::Instruction.targets_me?(Sibling.main_app.uid).should == true
+    it "has a uid" do
+      @instruction.uid.to_s.should == "http://g5-configurator.dev/instructions/5"
+    end
+    it "has a target uid" do
+      @instruction.g5_target.format.uid.to_s.should == "http://g5-configurator.dev/apps/g5-chd-1-metro-self-storage"
     end
   end
 end
