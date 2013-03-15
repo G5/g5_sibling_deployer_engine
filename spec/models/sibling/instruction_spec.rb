@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Sibling::Instruction do
   before :each do
+    Resque.stub(:enqueue)
     Sibling.stub(:main_app_uid).and_return("spec/support/g5-configurator-app.html")
     Sibling::Instruction.stub(:feed_url).and_return("spec/support/g5-configurator-entries.html")
     Sibling.consume_main_app_hcard

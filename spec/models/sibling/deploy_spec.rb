@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Sibling::Deploy do
   before :each do
+    Resque.stub(:enqueue)
     Sibling.stub(:main_app_uid).and_return("spec/support/g5-configurator-app.html")
     Sibling.consume_main_app_hcard
 
