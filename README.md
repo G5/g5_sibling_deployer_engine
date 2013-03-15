@@ -84,13 +84,13 @@ rake sibling:instruction:consume # consumes instruction feed
 
 ## Authors
 
-  * Jessica Lynn Suttles / [@jlsuttles](https://github.com/jlsuttles)
-  * Bookis Smuin / [@bookis](https://github.com/bookis)
+* Jessica Lynn Suttles / [@jlsuttles](https://github.com/jlsuttles)
+* Bookis Smuin / [@bookis](https://github.com/bookis)
+* Michael Mitchell / [@variousred](https://github.com/variousred)
 
 
 ## Contributing
 
-1. Fork it
 2. Get it running
 3. Create your feature branch (`git checkout -b my-new-feature`)
 4. Write your code and **specs**
@@ -104,16 +104,20 @@ If you find bugs, have feature requests or questions, please
 
 ## Specs
 
+Run once.
 ```bash
-rspec spec
+$ rspec spec
 ```
 
-
-## Coverage
-
+Keep then running.
 ```bash
-rspec spec
-open coverage/index.html
+$ guard
+```
+
+Coverage.
+```bash
+$ rspec spec
+$ open coverage/index.html
 ```
 
 
