@@ -58,8 +58,8 @@ module Dummy
     # load G5SiblingDeployerEngine::Engine with highest priority
     # followed by application and other railties
     # allows overridding in main app
-    config.railties_order = [G5SiblingDeployerEngine::Engine, :main_app, :all]
+    # config.railties_order = [G5SiblingDeployerEngine::Engine, :main_app, :all]
     # include G5SiblingDeployerEngine::Engine's migrations
-    config.paths['db/migrate'] += G5SiblingDeployerEngine::Engine.paths['db/migrate'].existent
+    # config.paths['db/migrate'] += G5SiblingDeployerEngine::Engine.paths['db/migrate'].existent
   end
 end
