@@ -5,7 +5,7 @@ class SiblingConsumer
   def self.perform
     Rails.logger.info "Starting sibling consumption..."
 
-    Sibling.consume
+    Sibling.consume_main_app_hcard
 
     Rails.logger.info "Succeeded consuming siblings."
   rescue StandardError => e
