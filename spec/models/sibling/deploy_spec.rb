@@ -40,9 +40,14 @@ describe Sibling::Deploy do
   describe "#deploy" do
     before :each do
       GithubHerokuDeployer.stub(:deploy)
+      GithubHerokuDeployer.stub(:heroku_run)
     end
     it "deploys" do
       GithubHerokuDeployer.should_receive(:deploy)
+      @deploy.deploy
+    end
+    it "migrates" do
+      GithubHerokuDeployer.should_receive(:heroku_run)
       @deploy.deploy
     end
     it "changes state to succeeded" do
