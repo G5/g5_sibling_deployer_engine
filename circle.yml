@@ -1,6 +1,7 @@
 ## Customize database setup
 database:
   override:
+    -
 ## Customize test commands
 test:
   override:
