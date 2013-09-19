@@ -5,6 +5,8 @@ Spork.prefork do
   unless ENV['DRB']
     require 'simplecov'
     SimpleCov.start 'rails'
+    require "codeclimate-test-reporter"
+    CodeClimate::TestReporter.start
   end
 
   ENV["RAILS_ENV"] ||= 'test'
@@ -34,5 +36,7 @@ Spork.each_run do
   if ENV['DRB']
     require 'simplecov'
     SimpleCov.start 'rails'
+    require "codeclimate-test-reporter"
+    CodeClimate::TestReporter.start
   end
 end
