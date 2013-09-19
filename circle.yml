@@ -1,7 +1,7 @@
 ## Customize database setup
 database:
   override:
-    -
+    - echo $DO_NOTHING
 ## Customize test commands
 test:
   override:
