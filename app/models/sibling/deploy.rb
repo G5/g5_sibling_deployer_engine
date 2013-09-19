@@ -34,16 +34,19 @@ class Sibling::Deploy < ActiveRecord::Base
   def deploy
     start!
 
-    GithubHerokuDeployer.deploy(
-      github_repo: git_repo,
-      heroku_repo: heroku_repo,
-      heroku_app_name: heroku_app_name
-    )
+    GithubHerokuDeployer.deploy(deployer_options)
+    GithubHerokuDeployer.heroku_run("rake db:migrate", deployer_options)
 
     succeed!
   rescue StandardError => e
     fail!
     raise e
+  end
+
+  def deployer_options
+    { github_repo: git_repo,
+      heroku_repo: heroku_repo,
+      heroku_app_name: heroku_app_name }
   end
 
   def async_deploy

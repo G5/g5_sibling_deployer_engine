@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Sibling::Instruction < ActiveRecord::Base
 
   attr_accessible :uid, :name, :published_at
@@ -24,7 +26,8 @@ class Sibling::Instruction < ActiveRecord::Base
       feed.entries.map do |hentry|
         find_or_create_from_hentry(hentry) if targets_me?(hentry)
       end.compact
-    rescue OpenURI::HTTPError, "304 Not Modified"
+    rescue OpenURI::HTTPError => e
+      raise e unless /304 Not Modified/ =~ e.message
     end
 
     def async_consume_feed
