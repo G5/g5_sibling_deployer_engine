@@ -10,39 +10,20 @@ Provides models, views, controllers, routes, and rake tasks for deploying Siblin
 
 ## Requirements
 
-* ["rails", "~> 3.2.12"](http://rubygems.org/gems/rails)
-* ["table_cloth", "~> 0.2.1"](http://rubygems.org/gems/table_cloth)
-* ["state_machine", "~> 1.1.2"](http://rubygems.org/gems/state_machine)
-* ["heroku_resque_autoscaler", "~> 0.1.0"](http://rubygems.org/gems/heroku_resque_autoscaler)
-* ["github_heroku_deployer", "~> 0.2.0"](http://rubygems.org/gems/github_heroku_deployer)
-* ["microformats2", "2.0.0.pre4"](http://rubygems.org/gems/microformats2)
+* ["rails"](http://rubygems.org/gems/rails)
+* ["table_cloth"](http://rubygems.org/gems/table_cloth)
+* ["state_machine"](http://rubygems.org/gems/state_machine)
+* ["heroku_resque_autoscaler"](http://rubygems.org/gems/heroku_resque_autoscaler)
+* ["github_heroku_deployer"](http://rubygems.org/gems/github_heroku_deployer)
+* ["microformats2"](http://rubygems.org/gems/microformats2)
 
 
 ## Installation
 
-### Gemfile
-
 Add these lines to your application's Gemfile.
 
 ```ruby
-source "https://gems.gemfury.com/88yeKzEGfizstwBaXVqj/"
-
 gem "g5_sibling_deployer_engine"
-```
-
-### From Gemfury Command line
-
-Add the Source URL to your .gemrc with this command:
-
-```bash
-gem sources -a https://gems.gemfury.com/88yeKzEGfizstwBaXVqj/
-gem install g5_sibling_deployer_engine
-```
-
-Or use it a single install:
-
-```
-gem install g5_sibling_deployer_engine --source https://gems.gemfury.com/88yeKzEGfizstwBaXVqj/
 ```
 
 
@@ -99,7 +80,7 @@ rake sibling:instruction:consume # consumes instruction feed
 7. Create new Pull Request
 
 If you find bugs, have feature requests or questions, please
-[file an issue](https://github.com/g5search/g5_sibling_deployer_engine/issues).
+[file an issue](https://github.com/G5/g5_sibling_deployer_engine/issues).
 
 
 ## Specs
@@ -121,13 +102,26 @@ $ open coverage/index.html
 ```
 
 
-## Releases
+## License
 
-```bash
-vi lib/g5_sibling_deployer_engine/version.rb # change version
-vi README.md # change version
-git add . && git commit -m "bumps version" && git push
-git tag -a -m "Version v0.0.0" v0.0.0 && git push --tags
-rake build
-fury push pkg/g5_sibling_deployer_engine-0.0.0.pkg
-```
+Copyright (c) 2013 G5
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
