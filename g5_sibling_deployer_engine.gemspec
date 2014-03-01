@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["jlsuttles@gmail.com"]
   gem.description   = "Rails Engine for G5 sibling deployers"
   gem.summary       = "Rails Engine for G5 sibling deployers"
-  gem.homepage      = "https://github.com/g5search/g5_sibling_deployer_engine"
+  gem.homepage      = "https://github.com/G5/g5_sibling_deployer_engine"
 
   gem.files         = `git ls-files`.split($\)
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
