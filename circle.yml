@@ -1,8 +1,0 @@
-## Customize database setup
-database:
-  override:
-    - $DO_NOTHING
-## Customize test commands
-test:
-  override:
-    - CODECLIMATE_REPO_TOKEN=614bca74ec65f43bb44ba351928fc3b9be739b131804ca70558b5f9060f71408 bundle exec rspec
