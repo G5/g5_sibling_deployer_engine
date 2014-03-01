@@ -102,17 +102,6 @@ $ open coverage/index.html
 ```
 
 
-## Releases
-
-```bash
-vi lib/g5_sibling_deployer_engine/version.rb # change version
-vi README.md # change version
-git add . && git commit -m "bumps version" && git push
-git tag -a -m "Version v0.0.0" v0.0.0 && git push --tags
-rake build
-fury push pkg/g5_sibling_deployer_engine-0.0.0.pkg
-```
-
 ## License
 
 Copyright (c) 2013 G5
