@@ -1,5 +1,8 @@
 # G5 Sibling Deployer
 
+[![Build Status](https://travis-ci.org/G5/g5_sibling_deployer_engine.png)](https://travis-ci.org/G5/g5_sibling_deployer_engine)
+[![Code Climate](https://codeclimate.com/repos/531273cf6956803c53001d6f/badges/1f71ed4b6e818344987e/gpa.png)](https://codeclimate.com/repos/531273cf6956803c53001d6f/feed)
+
 Provides models, views, controllers, routes, and rake tasks for deploying Sibling Apps.
 
 
