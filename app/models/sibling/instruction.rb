@@ -2,8 +2,6 @@ require 'open-uri'
 
 class Sibling::Instruction < ActiveRecord::Base
 
-  attr_accessible :uid, :name, :published_at
-
   has_many :deploys
   has_many :siblings, through: :deploys
 

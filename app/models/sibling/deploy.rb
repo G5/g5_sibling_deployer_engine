@@ -1,6 +1,4 @@
 class Sibling::Deploy < ActiveRecord::Base
-  attr_accessible :sibling_id, :instruction_id, :manual, :state
-  attr_accessible :git_repo, :heroku_repo, :heroku_app_name
 
   belongs_to :sibling
   belongs_to :instruction
