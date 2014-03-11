@@ -18,11 +18,11 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency "rails", "~> 3.2.12"
+  gem.add_dependency "rails", "~> 4.0.3"
   gem.add_dependency "table_cloth", "~> 0.2.1"
   gem.add_dependency "state_machine", "~> 1.1.2"
   gem.add_dependency "heroku_resque_autoscaler", "~> 0.1.0"
-  gem.add_dependency "microformats2", "~> 2.0.0.pre4"
+  gem.add_dependency "microformats2", "~> 2.0.0"
   gem.add_dependency "github_heroku_deployer", "~> 0.2.0"
 
   gem.add_development_dependency "sqlite3", "~> 1.3.6"
