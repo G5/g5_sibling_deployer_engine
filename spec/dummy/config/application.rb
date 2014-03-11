@@ -52,5 +52,8 @@ module Dummy
     # config.railties_order = [G5SiblingDeployerEngine::Engine, :main_app, :all]
     # include G5SiblingDeployerEngine::Engine's migrations
     # config.paths['db/migrate'] += G5SiblingDeployerEngine::Engine.paths['db/migrate'].existent
+
+    # Heroku requires this to be false
+    config.assets.initialize_on_precompile = false
   end
 end
