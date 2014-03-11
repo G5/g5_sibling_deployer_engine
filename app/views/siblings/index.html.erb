@@ -2,15 +2,32 @@
 
 <%= render partial: "nav", locals: { page: :siblings } %>
 
-<%= simple_table_for @siblings do |t| %>
-  <% t.column :id %>
-  <% t.column :name %>
-  <% t.column :heroku_app_name %>
-  <% t.column :git_repo %>
-  <% t.column :heroku_repo %>
-  <% t.actions do %>
-    <% action { |sibling| link_to "UID", sibling.uid, class: "btn" } %>
-    <% action { |sibling| sibling.main_app? ? "" :
-        link_to("Deploy", deploy_sibling_path(sibling), class: "btn", method: :post) } %>
-  <% end %>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Id</td>
+      <td>Name</td>
+      <td>Heroku app name</td>
+      <td>Git repo</td>
+      <td>Heroku repo</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @siblings.each do |t| %>
+      <tr>
+        <td>t.id</td>
+        <td>t.name</td>
+        <td>t.heroku_app_name</td>
+        <td>t.git_repo</td>
+        <td>t.heroku_repo</td>
+        <td>
+          <%= link_to 'UID' t.uid, class: "btn" %>
+          <% if t.main_app? %>
+            <%= link_to "Deploy", deploy_sibling_path(t), class: "btn", method: post %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -2,12 +2,27 @@
 
 <%= render partial: "siblings/nav", locals: { page: :instructions } %>
 
-<%= simple_table_for @siblings_instructions do |t| %>
-  <% t.column :id %>
-  <% t.column :name %>
-  <% t.column :published_at %>
-  <% t.column :created_at %>
-  <% t.actions do %>
-    <% action { |instruction| link_to "UID", instruction.uid, class: "btn" } %>
-  <% end %>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Id</td>
+      <td>Name</td>
+      <td>Published at</td>
+      <td>Created at</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sibling_instructions.each do |t| %>
+      <tr>
+        <td>t.id</td>
+        <td>t.name</td>
+        <td>t.published_at</td>
+        <td>t.created_at</td>
+        <td>
+          <%= link_to 'UID' t.uid, class: "btn" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
