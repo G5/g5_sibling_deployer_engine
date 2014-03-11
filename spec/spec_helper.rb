@@ -26,7 +26,6 @@ Spork.prefork do
   Spork.trap_method(Rails::Application, :eager_load!)
   # Load dummy app
   require File.expand_path("../dummy/config/environment.rb",  __FILE__)
-  Rails.application.railties.all { |r| r.eager_load! }
 
   # Show all of the backtraces
   Rails.backtrace_cleaner.remove_silencers!
