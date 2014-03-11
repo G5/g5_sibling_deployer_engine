@@ -23,7 +23,7 @@
         <td>t.heroku_repo</td>
         <td>
           <%= link_to 'UID' t.uid, class: "btn" %>
-          <% if t.main_app? %>
+          <% unless t.main_app? %>
             <%= link_to "Deploy", deploy_sibling_path(t), class: "btn", method: post %>
           <% end %>
         </td>

@@ -42,7 +42,7 @@ class Sibling::Instruction < ActiveRecord::Base
     end
 
     def find_or_create_from_hentry(hentry)
-      find_or_create_by_uid(hentry.uid.to_s) do |instruction|
+      find_or_create_by(uid: hentry.uid.to_s) do |instruction|
         hcard = instruction(hentry)
         instruction.name = hcard.name.to_s
         instruction.published_at = hentry.updated.value
