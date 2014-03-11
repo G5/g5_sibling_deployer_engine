@@ -26,8 +26,8 @@ Gem::Specification.new do |gem|
 
   gem.add_development_dependency "sqlite3", "~> 1.3.6"
   gem.add_development_dependency "simplecov", "~> 0.7.1"
-  gem.add_development_dependency "rspec-rails", "~> 2.12.0"
-  gem.add_development_dependency "guard-rspec", "~> 2.1.0"
+  gem.add_development_dependency "rspec-rails", "~> 2.14.1"
+  gem.add_development_dependency "guard-rspec", "~> 4.2.8"
   gem.add_development_dependency "spork", "~> 0.9.2"
   gem.add_development_dependency "rb-fsevent", "~> 0.9.2"
 end
