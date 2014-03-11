@@ -1,10 +1,13 @@
 language: ruby
 rvm:
   - 2.1.1
-script: bundle exec rspec
+script:
+  - bundle exec rspec
 notifications:
   campfire:
     rooms:
-      secure: UwsCEilVpBakyB+/A84lOS0Gp7KsNEZOGOXdWuS4M0L2BtmHYEYzO5DM3KrQuBmeCPoBQKfZRGGmAAXoHIinD+ziRczfknzL8lesAFcEVLs9ZMwtTdkk3FyCyOWcNu+Q6Iw5s9bz8Jpuz9u2iIC1knyAePhWSH76zg9R0DZrYmI=
+      secure: H6dWBB9lw65AwG951x+jNzj7nMI0FAHN/W1ZzQ+93hPW1mUHm3EK028JsEROSqNG1dMG4dm+UB1MPds4wtHWJNBjkcQO5qglCxWkWwUADcTMSkmAL7OcY59LkfXPa+Eqw1dGnhDZqA7EQuFWXIXnbV/EazadvpHHucbNzipDJrw=
+    template:
+      - "%{repository}#%{build_number} %{message} (%{branch} - %{commit} : %{author}) Change view : %{compare_url} Build details : %{build_url}"
     on_success: change
     on_failure: always
