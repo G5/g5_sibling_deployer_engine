@@ -1,3 +1,3 @@
 module G5SiblingDeployerEngine
-  VERSION = "3.0.0"
+  VERSION = "0.3.0"
 end
