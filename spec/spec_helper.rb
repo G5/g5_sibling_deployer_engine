@@ -9,13 +9,18 @@ Spork.prefork do
     CodeClimate::TestReporter.start
   end
 
+  # Configure Rails Environment
   ENV["RAILS_ENV"] ||= 'test'
+
   # Load dummy app
   require File.expand_path("../dummy/config/environment.rb",  __FILE__)
   require 'rspec/rails'
-  require 'rspec/autorun'
 
+  # Load support files
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+
+  # Show all of the backtraces
+  Rails.backtrace_cleaner.remove_silencers!
 
   RSpec.configure do |config|
     config.use_transactional_fixtures = true
@@ -24,12 +29,6 @@ Spork.prefork do
   end
 
   Spork.trap_method(Rails::Application, :eager_load!)
-  # Load dummy app
-  require File.expand_path("../dummy/config/environment.rb",  __FILE__)
-  Rails.application.railties.all { |r| r.eager_load! }
-
-  # Show all of the backtraces
-  Rails.backtrace_cleaner.remove_silencers!
 end
 
 Spork.each_run do

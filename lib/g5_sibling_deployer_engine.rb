@@ -1,5 +1,4 @@
 require "rails"
-require "table_cloth"
 require "state_machine"
 require "microformats2"
 require "github_heroku_deployer"

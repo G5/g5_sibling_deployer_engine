@@ -8,13 +8,12 @@ Provides models, views, controllers, routes, and rake tasks for deploying Siblin
 
 ## Current Version
 
-0.2.6
+0.3.0
 
 
 ## Requirements
 
 * ["rails"](http://rubygems.org/gems/rails)
-* ["table_cloth"](http://rubygems.org/gems/table_cloth)
 * ["state_machine"](http://rubygems.org/gems/state_machine)
 * ["heroku_resque_autoscaler"](http://rubygems.org/gems/heroku_resque_autoscaler)
 * ["github_heroku_deployer"](http://rubygems.org/gems/github_heroku_deployer)

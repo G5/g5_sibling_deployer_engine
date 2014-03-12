@@ -1,8 +1,7 @@
 language: ruby
 rvm:
-  - 1.9.3
-script:
-  - bundle exec rspec
+  - 2.1.1
+script: bundle exec rspec
 notifications:
   campfire:
     rooms:

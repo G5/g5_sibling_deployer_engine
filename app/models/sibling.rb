@@ -1,6 +1,4 @@
 class Sibling < ActiveRecord::Base
-  attr_accessible :uid, :name, :git_repo, :heroku_repo, :heroku_app_name
-
   has_many :deploys
   has_many :instructions, through: :deploys
 
@@ -31,7 +29,7 @@ class Sibling < ActiveRecord::Base
     end
 
     def find_or_create_from_hcard(hcard)
-      find_or_create_by_uid(hcard.uid.to_s) do |sibling|
+      find_or_create_by(uid: hcard.uid.to_s) do |sibling|
         sibling.name = hcard.name.to_s
         sibling.git_repo = hcard.g5_git_repo.to_s
         sibling.heroku_repo = hcard.g5_heroku_repo.to_s

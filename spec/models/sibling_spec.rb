@@ -36,6 +36,7 @@ describe Sibling do
       @hcard = Sibling.main_app_hcard.g5_sibling.format
     end
     it "creates Sibling if it does not already exist" do
+      Sibling.destroy_all
       expect { Sibling.find_or_create_from_hcard(@hcard) }.to(
         change(Sibling, :count).by(1))
     end
