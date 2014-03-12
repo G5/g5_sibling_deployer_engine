@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe SiblingDeployer do
   before do
-    @sibling_deploy = mock(Sibling::Deploy)
+    @sibling_deploy = double(Sibling::Deploy)
     Sibling::Deploy.stub(:find) { @sibling_deploy }
   end
 

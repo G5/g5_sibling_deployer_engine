@@ -41,10 +41,12 @@ describe Sibling::Instruction do
       @instruction = Sibling::Instruction.instruction(@hentry)
     end
     it "creates an Sibling::Instruction" do
+      Sibling::Instruction.destroy_all
       expect { Sibling::Instruction.find_or_create_from_hentry(@hentry) }.to(
         change(Sibling::Instruction, :count).by(1))
     end
     it "creates a Deploy" do
+      Sibling::Instruction.destroy_all
       expect { Sibling::Instruction.find_or_create_from_hentry(@hentry) }.to(
         change(Sibling::Deploy, :count).by(1))
     end
