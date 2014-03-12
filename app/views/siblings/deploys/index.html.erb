@@ -2,14 +2,33 @@
 
 <%= render partial: "siblings/nav", locals: { page: :deploys } %>
 
-<%= simple_table_for @siblings_deploys do |t| %>
-  <% t.column :id %>
-  <% t.column :created_at %>
-  <% t.column :heroku_app_name %>
-  <% t.column :state %>
-  <% t.column :git_repo %>
-  <% t.column :heroku_repo %>
-  <% t.column :sibling_id %>
-  <% t.column :instruction_id %>
-  <% t.column :manual %>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Id</td>
+      <td>Created at</td>
+      <td>Heroku app name</td>
+      <td>State</td>
+      <td>Git repo</td>
+      <td>Heroku Repo</td>
+      <td>Sibling id</td>
+      <td>Instruction id</td>
+      <td>Manual</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sibling_deploys.each do |t| %>
+      <tr>
+        <td>t.id</td>
+        <td>t.created_at</td>
+        <td>t.heroku_app_name</td>
+        <td>t.state</td>
+        <td>t.git_repo</td>
+        <td>t.heroku_repo</td>
+        <td>t.sibling_id</td>
+        <td>t.instruction_id</td>
+        <td>t.manual</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
