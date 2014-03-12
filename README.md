@@ -8,7 +8,7 @@ Provides models, views, controllers, routes, and rake tasks for deploying Siblin
 
 ## Current Version
 
-0.3.1
+0.3.2
 
 
 ## Requirements
