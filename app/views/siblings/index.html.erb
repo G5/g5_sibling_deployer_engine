@@ -22,7 +22,7 @@
         <td>t.git_repo</td>
         <td>t.heroku_repo</td>
         <td>
-          <%= link_to 'UID' t.uid, class: "btn" %>
+          <%= link_to 'UID', t.uid, class: "btn" %>
           <% unless t.main_app? %>
             <%= link_to "Deploy", deploy_sibling_path(t), class: "btn", method: post %>
           <% end %>
