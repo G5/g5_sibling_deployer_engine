@@ -1,6 +1,6 @@
 <% title "Siblings" %>
 
-<%= render partial: "nav", locals: { page: :siblings } %>
+<%= render partial: "siblings/nav", locals: { page: :siblings } %>
 
 <table class="table table-striped">
   <thead>
@@ -24,7 +24,7 @@
         <td>
           <%= link_to 'UID', t.uid, class: "btn" %>
           <% unless t.main_app? %>
-            <%= link_to "Deploy", deploy_sibling_path(t), class: "btn", method: post %>
+            <%= link_to "Deploy", deploy_sibling_path(t), class: "btn", method: :post %>
           <% end %>
         </td>
       </tr>
