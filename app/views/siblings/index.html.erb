@@ -16,11 +16,11 @@
   <tbody>
     <% @siblings.each do |t| %>
       <tr>
-        <td>t.id</td>
-        <td>t.name</td>
-        <td>t.heroku_app_name</td>
-        <td>t.git_repo</td>
-        <td>t.heroku_repo</td>
+        <td><%= t.id %></td>
+        <td><%= t.name %></td>
+        <td><%= t.heroku_app_name %></td>
+        <td><%= t.git_repo %></td>
+        <td><%= t.heroku_repo %></td>
         <td>
           <%= link_to 'UID', t.uid, class: "btn" %>
           <% unless t.main_app? %>
