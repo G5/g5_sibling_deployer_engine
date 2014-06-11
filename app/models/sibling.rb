@@ -21,7 +21,8 @@ class Sibling < ActiveRecord::Base
       main_app_hcard.g5_siblings.map do |sibling|
         find_or_create_from_hcard(sibling.format)
       end.compact if main_app_hcard
-    rescue OpenURI::HTTPError, "304 Not Modified"
+    rescue OpenURI::HTTPError => e
+      raise e unless /304 Not Modified/ =~ e.message
     end
 
     def async_consume

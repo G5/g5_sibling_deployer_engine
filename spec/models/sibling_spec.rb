@@ -20,7 +20,7 @@ describe Sibling do
     end
     it "swallows 304 errors" do
       error = OpenURI::HTTPError.new("304 Not Modified", nil)
-      Sibling.stub(:find_or_create_from_hcard).and_raise(error)
+      Sibling.stub(:main_app_hcard).and_raise(error)
       Sibling.consume_main_app_hcard.should be_nil
     end
   end
