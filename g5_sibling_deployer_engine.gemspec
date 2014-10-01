@@ -22,7 +22,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "state_machine", "~> 1.2.0"
   gem.add_dependency "heroku_resque_autoscaler", "~> 0.1.0"
   gem.add_dependency "microformats2", "~> 2.0.0"
-  gem.add_dependency "github_heroku_deployer", "~> 0.2.0"
+  gem.add_dependency "github_heroku_deployer", "~> 0.3.0"
 
   gem.add_development_dependency "sqlite3", "~> 1.3.6"
   gem.add_development_dependency "simplecov", "~> 0.8.2"
