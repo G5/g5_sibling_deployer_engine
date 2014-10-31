@@ -3,7 +3,7 @@ class SiblingInstructionConsumer
   @queue = :consumer
 
   def self.perform
-    Rails.logger.info "Starting instruction feed consumption..."
+    Rails.logger.info "Starting instruction feed consumption from #{Sibling::Instruction.feed_url}"
 
     Sibling::Instruction.consume_feed
 
