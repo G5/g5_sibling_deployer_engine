@@ -54,7 +54,6 @@ class Sibling::Instruction < ActiveRecord::Base
   private
 
   def deploy
-    #check for instruction param, deploy only those, otherwise:
-    Sibling.deploy_all(true, self.id)
+    Sibling.deploy_some(self.updated_app_kinds, self.id)
   end
 end
