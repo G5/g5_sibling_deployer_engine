@@ -46,7 +46,9 @@ class Sibling::Instruction < ActiveRecord::Base
         hcard = instruction(hentry)
         instruction.name = hcard.name.to_s
         instruction.published_at = hentry.updated.value
-        instruction.updated_app_kinds = hentry.g5_updated_app_kinds.map(&:to_s)
+        if hentry.try(:g5_updated_app_kinds).present?
+          instruction.updated_app_kinds = hentry.g5_updated_app_kinds.map(&:to_s)
+        end
       end
     end
   end # class << self
