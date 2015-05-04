@@ -56,6 +56,16 @@ describe Sibling do
       Sibling.deploy_all
     end
   end
+  describe ".deploy_some" do
+    before :each do
+      Sibling.consume_main_app_hcard
+      Sibling.any_instance.stub(:deploy)
+    end
+    it "deploys sibling apps" do
+      Sibling.any_instance.should_receive(:deploy).exactly(1).times
+      Sibling.deploy_some(["ch"])
+    end
+  end
   describe "#deploy" do
     before :each do
       Sibling::Deploy.any_instance.stub(:async_deploy)
