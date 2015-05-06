@@ -41,6 +41,11 @@ class Sibling < ActiveRecord::Base
     def deploy_all(manual=true, instruction_id=nil)
       all.each { |sibling| sibling.deploy(instruction_id) }
     end
+
+    def deploy_some(kinds=[], instruction_id=nil)
+      apps = kinds.flat_map { |k| Sibling.where('name LIKE ?', "%-#{k}-%") }
+      apps.each { |sibling| sibling.deploy(instruction_id) }
+    end
   end
 
   def deploy(instruction_id=nil)

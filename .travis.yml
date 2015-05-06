@@ -2,6 +2,9 @@ language: ruby
 rvm:
   - 2.1.1
 script: bundle exec rspec
+before_script:
+  - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
+  - pushd spec/dummy/; rake db:create db:migrate; popd
 notifications:
   campfire:
     rooms:

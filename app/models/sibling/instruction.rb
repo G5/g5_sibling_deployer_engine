@@ -46,6 +46,9 @@ class Sibling::Instruction < ActiveRecord::Base
         hcard = instruction(hentry)
         instruction.name = hcard.name.to_s
         instruction.published_at = hentry.updated.value
+        if hentry.try(:g5_updated_app_kinds).present?
+          instruction.updated_app_kinds = hentry.g5_updated_app_kinds.map(&:to_s)
+        end
       end
     end
   end # class << self
@@ -53,6 +56,6 @@ class Sibling::Instruction < ActiveRecord::Base
   private
 
   def deploy
-    Sibling.deploy_all(true, self.id)
+    Sibling.deploy_some(self.updated_app_kinds, self.id)
   end
 end
